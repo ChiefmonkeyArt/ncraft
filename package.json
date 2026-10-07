@@ -1,0 +1,20 @@
+{
+  "name": "ncraft",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A self-hosted Minecraft-style block world, integrated with Nostr, Blossom, nGit, and nsite.",
+  "scripts": {
+    "start": "node server/index.js",
+    "publish:nsite": "node scripts/publish-nsite.mjs"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "nostr-tools": "^2.7.2"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT"
+}

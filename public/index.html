@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ncraft — a self-hosted block world on Nostr</title>
+  <link rel="icon" href="data:," />
+  <link rel="stylesheet" href="./style.css" />
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div id="app"></div>
+
+  <div id="overlay">
+    <h1>ncraft</h1>
+    <p class="tag">A self-hosted Minecraft-style world, published and saved on Nostr.</p>
+    <button id="play" class="primary">Play</button>
+    <button id="login">Sign in with Nostr</button>
+    <div id="overlay-actions">
+      <button id="publishWorld">Publish world</button>
+      <button id="publishSite">Publish game (nsite)</button>
+    </div>
+    <div class="help">
+      <p><strong>Left-click</strong> break · <strong>Right-click</strong> place · <strong>WASD</strong> move
+      · <strong>Space</strong> up · <strong>Shift</strong> down · <strong>F</strong> fly · <strong>1–8 / wheel</strong> block</p>
+    </div>
+    <p id="tip">Click the game to lock the pointer and play.</p>
+  </div>
+
+  <div id="hud">
+    <div id="crosshair"></div>
+    <div id="players"></div>
+  </div>
+
+  <div id="hotbar"></div>
+
+  <div id="chat">
+    <div id="chatlog"></div>
+    <div id="chatbar">
+      <input id="chatInput" type="text" placeholder="Say something…" autocomplete="off" />
+      <button id="chatSend">Send</button>
+    </div>
+  </div>
+
+  <div id="status"></div>
+
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>
