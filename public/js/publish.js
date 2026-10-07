@@ -2,6 +2,7 @@
 // content-addressed Nostr objects (Blossom blobs + signed events).
 
 import { uploadToServers, downloadBlob } from "./blossom.js";
+import { BASE } from "./base.js";
 import { WORLD_KIND, NSITE_KIND, makeUnsignedEvent, signEvent, publishToRelays } from "./nostr.js";
 import { sha256Hex, utf8ToBytes } from "./util.js";
 
@@ -63,10 +64,10 @@ async function aggregateHash(pathTags) {
 // Upload every site file to Blossom and produce the signed kind-15128 manifest.
 export async function publishSite({ nostr, pubkey, relays, servers, title, description, sourceUrl, origin }) {
   const pathTags = [];
-  const base = (origin || location.origin).replace(/\/+$/, "");
+  const base = (origin || location.origin).replace(/\/+$/, "") + BASE;
 
   for (const rel of SITE_FILES) {
-    const resp = await fetch(base + rel);
+    const resp = await fetch(base + rel.slice(1));
     if (!resp.ok) throw new Error(`Failed to read ${rel}: ${resp.status}`);
     const bytes = new Uint8Array(await resp.arrayBuffer());
     const mime = mimeFor(rel);

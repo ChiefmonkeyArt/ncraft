@@ -1,5 +1,7 @@
 // ncraft — WebSocket client for the multiplayer server.
 
+import { BASE } from "./base.js";
+
 export class Net {
   constructor(url, handlers) {
     this.url = url;
@@ -11,7 +13,7 @@ export class Net {
 
   connect() {
     const proto = location.protocol === "https:" ? "wss" : "ws";
-    const url = this.url || `${proto}://${location.host}/mp`;
+    const url = this.url || `${proto}://${location.host}${BASE}mp`;
     this.ws = new WebSocket(url);
     this.ws.addEventListener("open", () => {
       this.connected = true;

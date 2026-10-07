@@ -53,6 +53,19 @@ your.domain {
 The WebSocket endpoint lives at `/mp` on the same origin, so a plain
 reverse proxy is all you need.
 
+## Deploy as a panel (subpath)
+
+To mount ncraft under an existing nginx host as `chiefmonkey.art/ncraft`:
+
+```bash
+sudo bash deploy/panel-install.sh
+```
+
+This clones the repo to `/opt/ncraft`, installs a systemd unit on
+`127.0.0.1:8888`, and drops a `location /ncraft/` fragment (with WebSocket
+upgrade for `/ncraft/mp`) — see `deploy/ncraft.nginx.conf`. The client is
+base-aware, so assets and multiplayer resolve correctly under any mount path.
+
 ## Configuration
 
 Environment variables (see `.env.example`):

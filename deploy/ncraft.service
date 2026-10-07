@@ -1,0 +1,18 @@
+[Unit]
+Description=ncraft block world
+After=network.target
+
+[Service]
+Type=simple
+User=ncraft
+WorkingDirectory=/opt/ncraft
+Environment=PORT=8888
+Environment=HOST=127.0.0.1
+Environment=WNCRAFT_DATA=/opt/ncraft/data
+ExecStart=/usr/bin/node server/index.js
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
